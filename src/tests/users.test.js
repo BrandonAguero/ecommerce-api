@@ -46,10 +46,6 @@ test("POST -> 'URL_USERS', should return status code 201, res.body.firstName ===
 test("PUT -> 'URL_USERS/:id', should return status code 200, res.body.firstName === userUpdated.firstName", async () => {
   const userUpdated = {
     firstName: "Brandon",
-    lastName: "Aguero",
-    email: "brandonaguero@gmail.com",
-    password: "brandon1234",
-    phone: "987654321",
   };
 
   const res = await request(app)
