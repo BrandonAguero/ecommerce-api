@@ -4,7 +4,7 @@ const {
   remove,
 } = require("../controllers/category.controller");
 const express = require("express");
-const { verifyJwt } = require("../utils/verifyJWT");
+const { verifyJwt } = require("../utils/verifyJwt");
 
 const routerCategory = express.Router();
 

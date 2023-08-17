@@ -6,7 +6,7 @@ const {
   login,
 } = require("../controllers/user.controller");
 const express = require("express");
-const { verifyJwt } = require("../utils/verifyJWT.js");
+const { verifyJwt } = require("../utils/verifyJwt");
 
 const routerUser = express.Router();
 
