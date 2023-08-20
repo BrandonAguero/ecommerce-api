@@ -35,7 +35,7 @@ const create = catchError(async (req, res) => {
   const result = await Purchase.bulkCreate(cart);
   if (!result) return res.sendStatus(404);
 
-  await Cart.destroy({ where: [userId] });
+  await Cart.destroy({ where: { userId } });
 
   return res.status(201).json(result);
 });
