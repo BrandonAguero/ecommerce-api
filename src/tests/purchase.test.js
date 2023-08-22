@@ -2,10 +2,10 @@ require("../models");
 const request = require("supertest");
 const app = require("../app");
 const Product = require("../models/Product");
-const Cart = require("../models/Cart");
 
 const URL_PURCHASE = "/api/v1/purchase";
 const URL_USERS = "/api/v1/users";
+const URL_CART = "/api/v1/cart";
 
 let product;
 let productBody;
@@ -35,10 +35,12 @@ beforeAll(async () => {
   cartBody = {
     quantity: 1,
     productId: product.id,
-    userId,
   };
 
-  await Cart.create(cartBody);
+  await request(app)
+    .post(URL_CART)
+    .send(cartBody)
+    .set("Authorization", `Bearer ${TOKEN}`);
 });
 
 test("CREATE -> 'URL_PURCHASE', should return status code 201", async () => {
@@ -47,6 +49,7 @@ test("CREATE -> 'URL_PURCHASE', should return status code 201", async () => {
     .set("Authorization", `Bearer ${TOKEN}`);
 
   expect(res.status).toBe(201);
+  expect(res.body[0].quantity).toBe(cartBody.quantity);
 });
 
 test("GET -> 'URL_PURCHASE', should return status code 200 and res.body.toHaveLength === 1", async () => {
