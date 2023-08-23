@@ -12,6 +12,4 @@ routerProductImg.route("/").get(getAll).post(upload.single("image"), create);
 
 routerProductImg.route("/:id").delete(remove);
 
-routerProductImg.route("/:id/images").delete(remove);
-
 module.exports = routerProductImg;

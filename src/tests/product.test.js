@@ -51,6 +51,10 @@ test("GET -> 'URL_PRODUCTS/:id', should return status code 200 and res.body.titl
   expect(res.status).toBe(200);
   expect(res.body).toBeDefined();
   expect(res.body.title).toBe(product.title);
+  expect(res.body.category).toBeDefined();
+  expect(res.body.category.id).toBe(product.categoryId);
+  expect(res.body.productImgs).toBeDefined();
+  expect(res.body.productImgs).toHaveLength(0);
 });
 
 test("PUT -> 'URL_PRODUCTS/:id', should return status code 200 and res.body.title === productUpdated.title", async () => {
@@ -75,6 +79,8 @@ test("GET -> 'URL_PRODUCTS', should return status code 200 and res.body.toHaveLe
   expect(res.body).toHaveLength(1);
   expect(res.body[0].category).toBeDefined();
   expect(res.body[0].category.id).toBe(category.id);
+  expect(res.body[0].productImgs).toBeDefined();
+  expect(res.body[0].productImgs).toHaveLength(0);
 });
 
 test("GET -> 'URL_PRODUCTS?category=id', should return status code 200, res.body.toHaveLength === 1 and res.body[0].category to be defined and res.body[0]", async () => {

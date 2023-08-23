@@ -8,6 +8,7 @@ const URL_USERS = "/api/v1/users";
 const URL_CART = "/api/v1/cart";
 
 let product;
+let category;
 let productBody;
 let userId;
 let TOKEN;
@@ -62,6 +63,8 @@ test("GET -> 'URL_PURCHASE', should return status code 200 and res.body.toHaveLe
   expect(res.body).toHaveLength(1);
   expect(res.body[0].product).toBeDefined();
   expect(res.body[0].productId).toBe(product.id);
+  expect(res.body[0].product.productImgs).toBeDefined();
+  expect(res.body[0].product.productImgs).toHaveLength(0);
 
   await product.destroy();
 });

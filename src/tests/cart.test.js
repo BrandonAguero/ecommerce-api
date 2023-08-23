@@ -2,7 +2,6 @@ require("../models");
 const request = require("supertest");
 const app = require("../app");
 const Product = require("../models/Product");
-const Category = require("../models/Category");
 
 const URL_CART = "/api/v1/cart";
 const URL_USERS = "/api/v1/users";
@@ -63,6 +62,8 @@ test("GET -> 'URL_CART', should return status code 200 and res.body.toHaveLength
   expect(res.body[0].product).toBeDefined();
   expect(res.body[0].product.id).toBe(product.id);
   expect(res.body[0].productId).toBe(product.id);
+  expect(res.body[0].product.productImgs).toBeDefined();
+  expect(res.body[0].product.productImgs).toHaveLength(0);
 });
 
 test("PUT -> 'URL_CART/:id', should return status code 200 and res.body.quantity === cartUpdated.quantity", async () => {
