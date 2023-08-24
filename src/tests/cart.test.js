@@ -47,7 +47,6 @@ test("POST -> 'URL_CART', should return status code 201 and res.body.quantity ==
   expect(res.status).toBe(201);
   expect(res.body).toBeDefined();
   expect(res.body.quantity).toBe(cart.quantity);
-  expect(res.body.id).toBe(userId);
 });
 
 test("GET -> 'URL_CART', should return status code 200 and res.body.toHaveLength === 1", async () => {

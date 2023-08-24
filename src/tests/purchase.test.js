@@ -8,7 +8,6 @@ const URL_USERS = "/api/v1/users";
 const URL_CART = "/api/v1/cart";
 
 let product;
-let category;
 let productBody;
 let userId;
 let TOKEN;
